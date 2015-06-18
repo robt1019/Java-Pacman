@@ -1,0 +1,31 @@
+READY FOR MARKING
+
+Instructions:
+
+Either use the .jar file or compile the app and run it.
+
+To compile and run the program type 'javac PacmanGame.java' followed by 'java PacmanGame'.
+
+The game unfortunately doesn't currently exit after the game is won or lost so it is necessary to quit the window and restart the application with 'java PacmanGame' if you wish to play again.
+
+The program is based around the following classes:
+
+-PacmanGame.java sets up the game JFrame, instantiates the first level map, and runs the map;
+
+-PacMap.java contains all code related to the creation, and running of a map. Levels are passed to this class as a String array, and subsequently converted into a char array that is used as the basis of the game's logic. User interaction via the keyboard is registered by implementing the KeyListener abstract class. Graphics code related to drawing game components is also found here. All other game components are instantiated here (pacman and ghost characters).
+
+-Pacman.java details all code needed for the creation of a pacman character object, contains all of the data it needs, and defines its behaviour through various methods. This is also where code related to pacman animation lives. The pacman character is drawn and animated using the graphics functions.
+
+-Ghost.java does what Pacman.java does but for ghost characters. Ghosts are created with an associated ImageIcon, based on a relative file path, and are not animated. This class also contains some very basic AI for ghost movement.
+
+Both Pacman and Ghost classes are responsible for drawing themselves using their own methds, when passed a graphics object.
+
+Main functionality:
+
+The main game loop is found in PacMap.java, and is based around a Swing Timer that fires an ActionEvent. This ActionEvent then details a series of actions that are performed per cycle. The game logic is updated less often than the animation is, in an attempt to improve the smoothness of the game.
+
+The aim of the game is to eat all the pills without coming into contact with a ghost. If pacman touches a ghost character, a death animation is shown, and the game ends. If all pills are eaten the game also ends.
+
+The most difficult bits of this project were the animation and movement aspects, specifically implementing constant movment and smoothish animation without tying up the event dispatch thread. This can still be a little buggy but is much better than it was. It took a fair amount of searching to find the Swing Timer and work out how to use it. This solved most of the problems I was having. The animation is still slightly blocky, and this is due to the grid system used for the game logic. If I were to design the game again I would look to change this to allow for smoother movement by the characters.
+
+I used a text editor and native Java libraries for development. I used NetBeans to create the .jar file.
